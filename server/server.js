@@ -21,3 +21,19 @@ app.use('/games', function (req, res) {
       res.sendStatus(500);
    })
 });
+
+app.post('/addGame', function (req, res) {
+   let game = req.body;
+   console.log('Adding game', game);
+
+   let sqlText = `INSERT INTO "videogames" ("title", "publisher", "releaseYear",
+      "rating") VALUES ($1, $2, $3, $4);`;
+
+   pool.query(sqlText, [game.title, game.publisher, game.releaseYear, game.rating])
+      .then((response) => {
+         res.sendStatus(201);
+      }).catch((error) => {
+         console.log(`Error posting videogames`, error);
+         res.sendStatus(500);
+      })
+});
