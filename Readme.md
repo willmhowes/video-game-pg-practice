@@ -1,1 +1,1 @@
-## A PostgreSQL videogame database made to practice database / serverside programming logic
+## A videogame database made to practice PostgreSQL syntax and serverside programming logic
